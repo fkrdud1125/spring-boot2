@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot 웹 기능 및 내장 Tomcat
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // JDBC를 사용하기 위한 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // Redis 연결을 위한 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // MySQL JDBC 드라이버
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // 테스트 관련 의존성
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
